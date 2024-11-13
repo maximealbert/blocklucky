@@ -187,3 +187,32 @@ body {
     font-size: 2rem;
   }
 }
+.warning-message {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #ff007f;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  overflow: hidden; 
+  white-space: nowrap; 
+}
+
+.warning-message span {
+  display: inline-block;
+  animation: scrollMessage 10s linear infinite; 
+}
+
+
+@keyframes scrollMessage {
+  0% {
+    transform: translateX(100%); 
+  }
+  100% {
+    transform: translateX(-100%); 
+  }
+}

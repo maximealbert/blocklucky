@@ -80,6 +80,14 @@ function App() {
         <button className="button" onClick={pickWinner}>Pick Winner (Manager Only)</button>
       )}
       <p className="message">{message}</p>
+<br/>
+<br/>
+<div className="warning-message">
+  <span>
+    JOUER COMPORTE DES RISQUES: ENDETTEMENT, ISOLEMENT, DéPENDANCE.
+    POUR ETRE AIDé, APPELEZ LE 09-74-75-13-13 (appel non surtaxé)
+  </span>
+</div>
     </div>
   );
 }
