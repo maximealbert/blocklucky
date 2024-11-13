@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserProvider, Contract, ethers } from 'ethers';
 import BlockLuckyABI from './BlockLuckyABI.json';
+import './App.css';  
 
 const contractAddress = '0xB416B1B313074799Ef8c69141Ab314b6Dd0AE2F2';
 
@@ -70,15 +71,15 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>BlockLucky Lottery</h1>
-      <button onClick={joinLottery}>Join Lottery (0.001 ether)</button>
-      <button onClick={getParticipantsCount}>Get Participants Count</button>
-      <p>Nombre de participants : {participantsCount}</p>
+    <div className="app-container">
+      <h1 className="title">BlockLucky Lottery</h1>
+      <button className="button" onClick={joinLottery}>Join Lottery (0.001 ether)</button>
+      <button className="button" onClick={getParticipantsCount}>Get Participants Count</button>
+      <p className="participants-count">Nombre de participants : {participantsCount}</p>
       {isManager && (
-        <button onClick={pickWinner}>Pick Winner (Manager Only)</button>
+        <button className="button" onClick={pickWinner}>Pick Winner (Manager Only)</button>
       )}
-      <p>{message}</p>
+      <p className="message">{message}</p>
     </div>
   );
 }
