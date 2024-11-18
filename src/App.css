@@ -204,7 +204,7 @@ body {
 
 .warning-message span {
   display: inline-block;
-  animation: scrollMessage 10s linear infinite; 
+  animation: scrollMessage 20s linear infinite; 
 }
 
 

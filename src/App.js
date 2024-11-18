@@ -3,13 +3,13 @@ import { BrowserProvider, Contract, ethers } from 'ethers';
 import BlockLuckyABI from './BlockLuckyABI.json';
 import './App.css';  
 
-const contractAddress = '0xB416B1B313074799Ef8c69141Ab314b6Dd0AE2F2';
+const contractAddress = '0x4D6b95632A4Ef940Dd271fd551CF943c560B202a';
 
 function App() {
   const [provider, setProvider] = useState(null);
   const [contract, setContract] = useState(null);
   const [message, setMessage] = useState('');
-  const [participantsCount, setParticipantsCount] = useState(0);
+  const [participantsCount, setParticipantsCount] = useState('');
   const [account, setAccount] = useState(null);
   const [isManager, setIsManager] = useState(false);
 
@@ -54,15 +54,19 @@ function App() {
   const getParticipantsCount = async () => {
     try {
       const count = await contract.getParticipantsCount();
-      setParticipantsCount(count.toNumber());
+      setParticipantsCount(count);
+      console.log(count);
     } catch (error) {
       console.error('Erreur lors de la récupération du nombre de participants:', error);
     }
   };
 
   const pickWinner = async () => {
+
+    // const randomFactor = Math.floor(Math.random() * 10000) + 1;
+    const randomFactor = 1;
     try {
-      const tx = await contract.pickWinner();
+      const tx = await contract.pickWinner(randomFactor);
       await tx.wait();
       setMessage('Un gagnant a été sélectionné !');
     } catch (error) {
@@ -75,7 +79,7 @@ function App() {
       <h1 className="title">BlockLucky Lottery</h1>
       <button className="button" onClick={joinLottery}>Join Lottery (0.001 ether)</button>
       <button className="button" onClick={getParticipantsCount}>Get Participants Count</button>
-      <p className="participants-count">Nombre de participants : {participantsCount}</p>
+      <p className="participants-count">Nombre de participants : {participantsCount.toString}</p>
       {isManager && (
         <button className="button" onClick={pickWinner}>Pick Winner (Manager Only)</button>
       )}
@@ -84,8 +88,8 @@ function App() {
 <br/>
 <div className="warning-message">
   <span>
-    JOUER COMPORTE DES RISQUES: ENDETTEMENT, ISOLEMENT, DéPENDANCE.
-    POUR ETRE AIDé, APPELEZ LE 09-74-75-13-13 (appel non surtaxé)
+    JOUER COMPORTE DES RISQUES : ENDETTEMENT, ISOLEMENT, DÉPENDANCE.
+    POUR ETRE AIDÉ, APPELEZ LE 09-74-75-13-13 (appel non surtaxé)
   </span>
 </div>
     </div>
