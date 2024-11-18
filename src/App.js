@@ -63,8 +63,8 @@ function App() {
 
   const pickWinner = async () => {
 
-    // const randomFactor = Math.floor(Math.random() * 10000) + 1;
-    const randomFactor = 1;
+    const randomFactor = Math.floor(Math.random() * 10000) + 1;
+    
     try {
       const tx = await contract.pickWinner(randomFactor);
       await tx.wait();
